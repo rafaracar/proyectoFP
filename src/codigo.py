@@ -118,7 +118,7 @@ if primer_input == 'Si':
     1- Por nombre
     2- Por numero de pokedex
     3- Por tipo
-    """)
+    4- Legendarios Si o No""")
     segundo_input= input()
     if segundo_input== '1':
         nombre_a_buscar = (input("escribe el nombre del pokemon a buscar:"))
