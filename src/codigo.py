@@ -5,9 +5,11 @@ Created on 10 nov. 2020
 @author: Rafael
 '''
 import csv
+from builtins import set
+from _ast import If
 contador=0 
 list =[]
-nombre_a_buscar = (input("escribe el nombre del pokemon a buscar:"))
+
 class Pokemon:
     num_pokedex = ""
     nombre =  ""
@@ -104,14 +106,59 @@ with open("../pokemon.csv", encoding="utf8") as f:
             pokemon = Pokemon(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12], row[13], row[14], row[15], row[16], row[17], row[18], row[19], row[20], row[21], row[22], row[23], row[24], row[25], row[26], row[27], row[28], row[29],row[30],row[31],row[32],row[33],row[34],row[35],row[36],row[37],row[38],row[39],row[40])
             list.append(pokemon)
             
-    for pokemon in list:
-        if pokemon.nombre.lower() == nombre_a_buscar.lower():
+    
+            ''' for pokemon in list:
+            if pokemon.nombre.lower() == nombre_a_buscar.lower():
             print(pokemon.nombre)
-            
-            
-            
-
+           '''         
+print("¿Desea realizar una busqueda en la base de datos?")
+primer_input= input("Escriba 'Si' o 'No':")
+if primer_input == 'Si':
+    print("""¿Como desea buscar?
+    1- Por nombre
+    2- Por numero de pokedex
+    3- Por tipo
+    """)
+    segundo_input= input()
+    if segundo_input== '1':
+        nombre_a_buscar = (input("escribe el nombre del pokemon a buscar:"))
+        for pokemon in list:
+            if pokemon.nombre.lower() == nombre_a_buscar.lower():
+                print("Su numero de la pokedex es:", pokemon.num_pokedex, ".Su nombre es:",pokemon.nombre, ".Sus habilidades pueden ser:", pokemon.habilidad,".Su tipo es:", pokemon.tipo1, pokemon.tipo2, ".Su altura es:", pokemon.altura,"m", ".Su peso es:", pokemon.peso,"Kg")
+    elif segundo_input== '2':
+        for pokemon in list:
+            numero_pokedex= (input("escbribe un numero de la pokedex -del 1 al 801-"))
+            if pokemon.num_pokedex == numero_pokedex:
+                print("Su numero de la pokedex es:", pokemon.num_pokedex, ".Su nombre es:",pokemon.nombre, ".Sus habilidades pueden ser:", pokemon.habilidad,".Su tipo es:", pokemon.tipo1, pokemon.tipo2, ".Su altura es:", pokemon.altura,"m", ".Su peso es:", pokemon.peso,"Kg")
+    elif segundo_input== '3':
+        tipo_para_buscar= input("Escribe el tipo por el que va a filtrar -en ingles-:")
+        for pokemon in list:
+            if pokemon.tipo1 or pokemon.tipo2 == tipo_para_buscar:
+                print(pokemon.nombre)
+    elif segundo_input== '4':
+        ver_legendarios=input(("quieres ver los legendarios? -escribe 'Si' o 'No'")
+        for pokemon in list:
+            if ver_legendarios== 'Si':
+                for pokemon in list
+                    if pokemon.legendario== 1:
+                        print(pokemon.nombre)
+    
+            elif ver_legendarios== 'No':
+                 for pokemon in list:
+                     if pokemon.legendario== 0:
+                         print(pokemon.nombre)
                 
-                        
+elif primer_input == 'No': 
+    print("vale, no quieres hacer nada")
                 
-
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
