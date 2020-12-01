@@ -6,7 +6,7 @@ Created on 10 nov. 2020
 '''
 import csv
 from builtins import set
-from _ast import If
+from _ast import If, Or
 contador=0 
 list =[]
 
@@ -114,13 +114,15 @@ print("¿Desea realizar una busqueda en la base de datos?")
 
 primer_input= input("Escriba 'Si' o 'No':")
 def filtra_tipos (pokemon):
-    return pokemon.tipo1 or pokemon.tipo2 == tipo_para_buscar
+    return pokemon.tipo1 or pokemon.tipo2 == tipo_para_buscar #no se hacer un sistema de filtrado
 if primer_input == 'Si':
     print("""¿Como desea buscar?
     1- Por nombre
     2- Por numero de pokedex
     3- Por tipo
-    4- Quiero ver todos los Pokemon""")
+    4- Quiero ver todos los Pokemon
+    5- Quiero saber a que es fuerte y debil un pokemon """)
+    
     segundo_input= input()    
     if segundo_input== '1':
         nombre_a_buscar = (input("escribe el nombre del pokemon a buscar:"))
@@ -128,29 +130,31 @@ if primer_input == 'Si':
             if pokemon.nombre.lower() == nombre_a_buscar.lower():
                 print("Su numero de la pokedex es:", pokemon.num_pokedex, ".Su nombre es:",pokemon.nombre, ".Sus habilidades pueden ser:", pokemon.habilidad,".Su tipo es:", pokemon.tipo1, pokemon.tipo2, ".Su altura es:", pokemon.altura,"m", ".Su peso es:", pokemon.peso,"Kg")
     elif segundo_input== '2':
+        numero_pokedex= (input("escbribe un numero de la pokedex -del 1 al 801-"))
         for pokemon in list:
-            numero_pokedex= (input("escbribe un numero de la pokedex -del 1 al 801-"))
             if pokemon.num_pokedex == numero_pokedex:
-                print("Su numero de la pokedex es:", pokemon.num_pokedex, ".Su nombre es:",pokemon.nombre, ".Sus habilidades pueden ser:", pokemon.habilidad,".Su tipo es:", pokemon.tipo1, pokemon.tipo2, ".Su altura es:", pokemon.altura,"m", ".Su peso es:", pokemon.peso,"Kg")
+                    print("Su numero de la pokedex es:", pokemon.num_pokedex, ".Su nombre es:",pokemon.nombre, ".Sus habilidades pueden ser:", pokemon.habilidad,".Su tipo es:", pokemon.tipo1, pokemon.tipo2, ".Su altura es:", pokemon.altura,"m", ".Su peso es:", pokemon.peso,"Kg")
     elif segundo_input== '3':
         tipo_para_buscar= input("Escribe el tipo por el que va a filtrar:")
         for pokemon in list:
-            tipos= filter(filtra_tipos(pokemon),)
-            pokemon_filtrados= list(tipos)
-            print(pokemon_filtrados)
+            if pokemon.tipo1 or pokemon.tipo2 == tipo_para_buscar:
+                print(pokemon.nombre)
                 
     elif segundo_input== '3':
         for pokemon in list:
             print("Su numero de la pokedex es:", pokemon.num_pokedex, ".Su nombre es:",pokemon.nombre, ".Sus habilidades pueden ser:", pokemon.habilidad,".Su tipo es:", pokemon.tipo1, pokemon.tipo2, ".Su altura es:", pokemon.altura,"m", ".Su peso es:", pokemon.peso,"Kg")
     elif segundo_input== '4':
         for pokemon in list:
-            print(pokemon.nombre, "Tipo:", pokemon.tipo1, pokemon.tipo2, "Su ratio de captura es:", pokemon.ratio_captura, "la curva de experiencia es:", pokemon.exp_nivel, "El porcentaje de que te encuentres a un macho en estado salvaje es:", pokemon.porcentaje_macho, "Es legendario:", pokemon.legendario )
-            
-            
-            
-            
-            
-            
-            
-            
-            
+           print(pokemon.nombre, "Tipo:", pokemon.tipo1, pokemon.tipo2, "Su ratio de captura es:", pokemon.ratio_captura, "la curva de experiencia es:", pokemon.exp_nivel, "El porcentaje de que te encuentres a un macho en estado salvaje es:", pokemon.porcentaje_macho, "Es legendario:", pokemon.legendario )
+    elif segundo_input== '5':
+        nombre_a_buscar= input("Escribe el nombre del pokemon del que quieres saber sus debilidades,")
+        for pokemon in list:
+            if pokemon.nombre.lower()== nombre_a_buscar.lower():
+                print("Contra acero", pokemon.contra_acero,"Contra agua", pokemon.contra_agua,"Contra bicho", pokemon.contra_bicho,"Contra dragon", pokemon.contra_dragon,"Contra electrico", pokemon.contra_electrico,"Contra Fantasma", pokemon.contra_fantasma,"Contra Fuego", pokemon.contra_fuego,"Contra Hada", pokemon.contra_hada,"Contra hielo", pokemon.contra_hielo,"Contra lucha", pokemon.contra_lucha,"Contra normal", pokemon.contra_normal,"Contra planta", pokemon.contra_planta,"Contra psiquico", pokemon.contra_psiquico,"Contra roca", pokemon.contra_roca,"Contra siniestro", pokemon.contra_siniestro,"Contra tierra", pokemon.contra_tierra,"Contra veneno", pokemon.contra_veneno,"Contra volador", pokemon.contra_volador)
+        
+        
+        
+        
+        
+        
+        
