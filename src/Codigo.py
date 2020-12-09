@@ -33,12 +33,10 @@ primer_input= input("Escriba 'si' o 'no':")
 
 #######################################################################################################################     
 def filtra_tipos ():
-    with open("../pokemon.csv", encoding="utf8") as f: 
         tipo_para_buscar= input("Escribe el tipo por el que va a filtrar:")
-        reader= csv.reader(f)
-        for row in reader:
-            if tipo_para_buscar in row[36] or tipo_para_buscar in row[37]:
-                print("Su nombre es", row[30], ",y sus tipos son", row[36],"y", row[37])
+        for pokemon in list:
+            if tipo_para_buscar in pokemon.tipo1 or tipo_para_buscar in pokemon.tipo2:
+                print("Su nombre es", pokemon.nombre, ",y sus tipos son", pokemon.tipo1,",",pokemon.tipo2)
 #######################################################################################################################     
 
 #######################################################################################################################                     
@@ -76,48 +74,42 @@ def tabla_debilidad_fuerza ():
 
 #######################################################################################################################     
 def cantidad_total_de_pokemon_segun_tipo ():
-    with open("../pokemon.csv", encoding="utf8") as f:
-        tipo_para_contar= input("Escribe el tipo para contar la cantidad de pokemon:")
-        reader=csv.reader(f)
-        cantidad_de_pokemon=0
-        for row in reader:
-            if tipo_para_contar in row[36] or tipo_para_contar in row[37]:
-                cantidad_de_pokemon+=1
-                
-                
-        print("Hay",cantidad_de_pokemon, " pokemons del tipo", tipo_para_contar)
+    tipo_para_contar= input("Escribe el tipo para contar la cantidad de pokemon:")
+    cantidad_de_pokemon=0
+    for pokemon in list:
+        if tipo_para_contar in pokemon.tipo1 or tipo_para_contar in pokemon.tipo2:
+            cantidad_de_pokemon+=1
+            
+            
+    print("Hay",cantidad_de_pokemon, " pokemons del tipo", tipo_para_contar)
  #######################################################################################################################     
         
  #######################################################################################################################            
 def cantidad_de_legendarios():
-      with open("../pokemon.csv", encoding="utf8") as f:
-          cantidad_legendarios=0
-          reader=csv.reader(f)
-          for row in reader:
-                if row[40]=='1':
-                    cantidad_legendarios+=1
-            
-            
-            
-            
-          print("Hay",cantidad_legendarios, " pokemons legendarios")
+  cantidad_legendarios=0
+  for pokemon in list:
+        if pokemon.legendario=='1':
+            cantidad_legendarios+=1
+    
+    
+    
+    
+  print("Hay",cantidad_legendarios, " pokemons legendarios")
 #######################################################################################################################       
     
     
 #######################################################################################################################         
 def ratio_de_legendarios():
-    with open("../pokemon.csv", encoding="utf8") as f:
-        reader=csv.reader(f)
-        cantidad_legendarios=0
-        cantidad_no_legendarios=0
-        for row in reader:
-            if row[40]== '1':
-                cantidad_legendarios+=1
-            elif row[40]=='0':
-                cantidad_no_legendarios+=1
-        
-        ratio= cantidad_no_legendarios/cantidad_legendarios
-        print("Por cada pokemon legendario hay", round(ratio),"pokemon no legendarios")
+    cantidad_legendarios=0
+    cantidad_no_legendarios=0
+    for pokemon in list:
+        if pokemon.legendario== '1':
+            cantidad_legendarios+=1
+        elif pokemon.legendario=='0':
+            cantidad_no_legendarios+=1
+    
+    ratio= cantidad_no_legendarios/cantidad_legendarios
+    print("Por cada pokemon legendario hay", round(ratio),"pokemon no legendarios")
  #######################################################################################################################            
 
 ###########################################################################################################
@@ -186,18 +178,16 @@ def cantidad_total_de_pokemon ():
 
 #######################################################################################################################
 def cantidad_total_de_pokemon_por_generacion ():
-    with open("../pokemon.csv", encoding="utf8") as f:
-        generacion_a_buscar=input("Elige una generacion para buscar sus pokemon -de la 1 a la 7-")
-        contador=0
-        reader=csv.reader(f)
-        cantidad_de_pokemon=0
-        for row in reader: 
-            if generacion_a_buscar in row[39]:
-                cantidad_de_pokemon+=1
-                
-                
-        print("Hay",cantidad_de_pokemon, " pokemons nuevos en el mundo pokemon de la ",generacion_a_buscar,"generacion")
-        
+    generacion_a_buscar=input("Elige una generacion para buscar sus pokemon -de la 1 a la 7-")
+    contador=0
+    cantidad_de_pokemon=0
+    for pokemon in list: 
+        if generacion_a_buscar in pokemon.generacion:
+            cantidad_de_pokemon+=1
+            
+            
+    print("Hay",cantidad_de_pokemon, " pokemons nuevos en el mundo pokemon de la ",generacion_a_buscar,"generacion")
+    
 #######################################################################################################################
 #######################################################################################################################
 def probabilidad_de_encontrar_un_shiny ():
@@ -218,9 +208,10 @@ def probabilidad_de_pokerus ():
     pregunta=input("Quieres saber la probabilidad de que encuentres un pokemon variocolor que tenga el pokerus?")
     if pregunta== 'si':
         print("la probabilidad de que encuentres un pokemon variocolor que tenga el pokerus es de un", pokerus*probabilidad,"%")
+    elif pregunta=='no':
+        print("Oh, que pena, =c")
     else:
-        "Oh, que pena, =c"
-        
+        print("jaja que dices")    
 
 
 #######################################################################################################################
@@ -272,6 +263,10 @@ if primer_input == 'si':
         probabilidad_de_encontrar_un_shiny()
     elif segundo_input=='14':
         probabilidad_de_pokerus()
+        
+        
+    
+        
 
 
 
@@ -283,49 +278,13 @@ if primer_input == 'si':
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-elif primer_input == 'no':
-    print("Vale, no quieres hacer nada, te entiendo.")
+    elif primer_input == 'no':
+        print("Vale, no quieres hacer nada, te entiendo.")
+    
+    
+    
+    else:
+        print("Si quieres hacer una funcion de mi codigo escoge uno de los números de arriba, no vale que me pongas:",segundo_input)
         
         
        
