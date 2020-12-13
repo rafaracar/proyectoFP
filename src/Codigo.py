@@ -4,6 +4,7 @@ Created on 10 nov. 2020
 
 @author: Rafael
 '''
+import time
 import csv
 from Pokemon import  Pokemon
 contador=0 
@@ -29,11 +30,11 @@ print("¿Desea realizar una busqueda en la base de datos?")
 
 
 
-primer_input= input("Escriba 'si' o 'no':")
+primer_input= 'si'
 
 #######################################################################################################################     
 def filtra_tipos ():
-        tipo_para_buscar= input("Escribe el tipo por el que va a filtrar:")
+        tipo_para_buscar= 'fire'
         for pokemon in list:
             if tipo_para_buscar in pokemon.tipo1 or tipo_para_buscar in pokemon.tipo2:
                 print("Su nombre es", pokemon.nombre, ",y sus tipos son", pokemon.tipo1,",",pokemon.tipo2)
@@ -41,7 +42,7 @@ def filtra_tipos ():
 
 #######################################################################################################################                     
 def buscar_por_nombre (): 
-        nombre_a_buscar = (input("escribe el nombre del pokemon a buscar:"))
+        nombre_a_buscar = "pikachu"
         for pokemon in list:
             if pokemon.nombre.lower() == nombre_a_buscar.lower():
                 print("Su numero de la pokedex es:", pokemon.num_pokedex, ".Su nombre es:",pokemon.nombre, ".Sus habilidades pueden ser:", pokemon.habilidad,".Su tipo es:", pokemon.tipo1, pokemon.tipo2, ".Su altura es:", pokemon.altura,"m", ".Su peso es:", pokemon.peso,"Kg")
@@ -49,7 +50,7 @@ def buscar_por_nombre ():
 
 #######################################################################################################################     
 def buscar_por_num_pokedex ():
-        numero_pokedex= (input("escbribe un numero de la pokedex -del 1 al 801-"))
+        numero_pokedex= '174'
         for pokemon in list:
             if pokemon.num_pokedex == numero_pokedex:
                     print("Su numero de la pokedex es:", pokemon.num_pokedex, ".Su nombre es:",pokemon.nombre, ".Sus habilidades pueden ser:", pokemon.habilidad,".Su tipo es:", pokemon.tipo1, pokemon.tipo2, ".Su altura es:", pokemon.altura,"m", ".Su peso es:", pokemon.peso,"Kg")
@@ -65,7 +66,7 @@ def ver_todos_los_pokemon ():
 
 #######################################################################################################################     
 def tabla_debilidad_fuerza ():
-     nombre_a_buscar= input("Escribe el nombre del pokemon del que quieres saber sus debilidades,")
+     nombre_a_buscar= "garchomp"
      for pokemon in list:
             if pokemon.nombre.lower()== nombre_a_buscar.lower():
                 print("Contra acero", pokemon.contra_acero,"Contra agua", pokemon.contra_agua,"Contra bicho", pokemon.contra_bicho,"Contra dragon", pokemon.contra_dragon,"Contra electrico", pokemon.contra_electrico,"Contra Fantasma", pokemon.contra_fantasma,"Contra Fuego", pokemon.contra_fuego,"Contra Hada", pokemon.contra_hada,"Contra hielo", pokemon.contra_hielo,"Contra lucha", pokemon.contra_lucha,"Contra normal", pokemon.contra_normal,"Contra planta", pokemon.contra_planta,"Contra psiquico", pokemon.contra_psiquico,"Contra roca", pokemon.contra_roca,"Contra siniestro", pokemon.contra_siniestro,"Contra tierra", pokemon.contra_tierra,"Contra veneno", pokemon.contra_veneno,"Contra volador", pokemon.contra_volador)
@@ -74,7 +75,7 @@ def tabla_debilidad_fuerza ():
 
 #######################################################################################################################     
 def cantidad_total_de_pokemon_segun_tipo ():
-    tipo_para_contar= input("Escribe el tipo para contar la cantidad de pokemon:")
+    tipo_para_contar= 'fairy'
     cantidad_de_pokemon=0
     for pokemon in list:
         if tipo_para_contar in pokemon.tipo1 or tipo_para_contar in pokemon.tipo2:
@@ -130,7 +131,7 @@ def media_de_pasos_para_abrir_huevo ():
 #######################################################################################################################     
 def cualidad_pokemon ():   #este no se como estructurarlo
     contador=0
-    x=input("elige entre estas cualidades: 1-mas alto, 2- mayor peso, 3-mas vida, 4-mas defensa, 5-mas rapido")
+    x='2'
     for pokemon in list:
         if contador==0:
             contador+=1
@@ -178,7 +179,7 @@ def cantidad_total_de_pokemon ():
 
 #######################################################################################################################
 def cantidad_total_de_pokemon_por_generacion ():
-    generacion_a_buscar=input("Elige una generacion para buscar sus pokemon -de la 1 a la 7-")
+    generacion_a_buscar='4'
     contador=0
     cantidad_de_pokemon=0
     for pokemon in list: 
@@ -191,7 +192,7 @@ def cantidad_total_de_pokemon_por_generacion ():
 #######################################################################################################################
 #######################################################################################################################
 def probabilidad_de_encontrar_un_shiny ():
-    encuentros=float(input("Cuantos encuentros pokemon has tenido?"))
+    encuentros=float(4000)
     probabilidad= 1/8192
     shinis_encontrados= encuentros*probabilidad
     print("A estas alturas en condiciones normales te tendrias que haber encontrado con:", shinis_encontrados,"pokemon variocolor")
@@ -205,7 +206,8 @@ def probabilidad_de_pokerus ():
     probabilidad= 1/8192
     pokerus= 3/65536
     print("la probabilidad de que un pokemon tenga el pokerus es de un", pokerus,"%")
-    pregunta=input("Quieres saber la probabilidad de que encuentres un pokemon variocolor que tenga el pokerus?")
+    pregunta='si'
+    
     if pregunta== 'si':
         print("la probabilidad de que encuentres un pokemon variocolor que tenga el pokerus es de un", pokerus*probabilidad,"%")
     elif pregunta=='no':
@@ -216,7 +218,7 @@ def probabilidad_de_pokerus ():
 
 #######################################################################################################################
 #######################################################################################################################       
-if primer_input == 'si':
+#if primer_input == 'si':
     print("""¿Como desea buscar?
     1- Por nombre
     2- Por numero de pokedex
@@ -233,7 +235,7 @@ if primer_input == 'si':
     13- ¿Cual es la probabilidad de encontrar un pokemon variocolor?
     14- ¿Y la probabilidad de que un pokemon tenga el pokerus?""")
 #######################################################################################################################     
-    
+"""    
     segundo_input= input()    
     if segundo_input== '1':
         buscar_por_nombre()
@@ -288,9 +290,81 @@ if primer_input == 'si':
         
         
        
-        
-       
-        
+   """     
+time.sleep(1)
+print("El usuario ha decidido realizar una busqueda en el programa")
+time.sleep(2)
+print("""¿Como desea buscar?
+1- Por nombre
+2- Por numero de pokedex
+3- Por tipo
+4- Quiero ver todos los Pokemon
+5- Quiero saber a que es fuerte y debil un pokemon 
+6- ¿Cuantos pokemon hay de este tipo?
+7- ¿Cuantos pokemon hay?
+8- ¿Cuantos pokemons nuevos hay en cada generacion?
+9- ¿Cuantos legendarios hay?
+10- Dato sobre los legendarios
+11- Media de pasos por huevo
+12- ¿Que pokemon es el mas...?
+13- ¿Cual es la probabilidad de encontrar un pokemon variocolor?
+14- ¿Y la probabilidad de que un pokemon tenga el pokerus?""")
+time.sleep(5)
+print("el usuario ha cargado la opcion 1 y ha buscado a 'Pikachu'")
+time.sleep(2)
+buscar_por_nombre()
+time.sleep(2)
+print("ahora, el usuario ha cargado la opción 2 y ha buscado el numero '174'")     
+buscar_por_num_pokedex()
+time.sleep(2)
+print("ahora, el usuario ha cargado la opcion 3 y ha filtrado el tipo 'fire'")
+filtra_tipos()
+time.sleep(2)
+print("ahora, el usuario ha cargado la opcion 4")    
+time.sleep(2)
+ver_todos_los_pokemon()
+time.sleep(4)
+print("ahora, el usuario ha cargado la opcion 5 y ha buscado las debilidades y fortalezas de 'garchomp'")   
+time.sleep(2)
+tabla_debilidad_fuerza()
+time.sleep(3)
+print("ahora, el usuario ha cargado la opcion 6 y ha buscado la cantidad de pokemons del tipo 'fariy'")
+time.sleep(2)
+cantidad_total_de_pokemon_segun_tipo()
+time.sleep(4)
+print("ahora, el usuario ha cargado la opcion 7")
+time.sleep(2)
+cantidad_total_de_pokemon()
+time.sleep(3)
+print("ahora, el usuario ha cargado la opcion 8 y ha buscado la generacion 4")
+time.sleep(2)
+cantidad_total_de_pokemon_por_generacion()
+time.sleep(2)
+print("ahora, el usuario ha cargado la opcion 9")
+time.sleep(2)
+cantidad_de_legendarios()
+time.sleep(2)
+print("ahora, el usuario ha cargado la opcion 10")
+time.sleep(2)
+ratio_de_legendarios()
+time.sleep(2)
+print("ahora, el usuario ha cargado la opcion 11")
+time.sleep(2)
+media_de_pasos_para_abrir_huevo()
+time.sleep(2)
+print("ahora, el usuario ha cargado la opcion 12 y quiere saber que pokemon es el que mas pesa")
+time.sleep(2)
+cualidad_pokemon()
+time.sleep(2)
+print("ahora, el usuario ha cargado la opcion 13 y ha tenido 4000 encuentros")
+time.sleep(2)
+probabilidad_de_encontrar_un_shiny()
+time.sleep(2)
+print("ahora, el usuario ha cargado la opcion 14 y quiere saber el dato extra de la misma")
+time.sleep(2)
+probabilidad_de_pokerus()
+
+
         
         
         
